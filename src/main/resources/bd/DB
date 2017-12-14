@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS employee;
+
+
+CREATE TABLE employee (
+  id SERIAL NOT NULL,
+  first_name varchar(45) DEFAULT NULL,
+  last_name varchar(45) DEFAULT NULL,
+  email varchar(45) DEFAULT NULL,
+  phone varchar(45) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+
+INSERT INTO employee (first_name, last_name, email, phone) VALUES
+( 'Virat', 'Kohli', 'virat@beingjavaguys.com', '89876787890'),
+( 'Sachin', 'Tendulkar', 'sachin@india.com', '89898989898'),
+( 'Virendra', 'Sehwag', 'viru@delhi.com', '8976778789');
