@@ -15,10 +15,7 @@
     <div style="color: teal; font-size: 30px">Being Java Guys |
         Registration Form</div>
 
-
-     <c:url var="userRegistration" value="saveUser.html" />
-    <form:form id="registerForm" modelAttribute="employee" method="post"
-               action="register">
+    <form:form method="post" action="register" modelAttribute="employee">
         <table width="400px" height="150px">
             <tr>
                 <td><form:label path="firstName">First Name</form:label>
@@ -50,8 +47,6 @@
             </tr>
         </table>
     </form:form>
-
-
     <a href="list">Click Here to see User List</a>
 </center>
 </body>

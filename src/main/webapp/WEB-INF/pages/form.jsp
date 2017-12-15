@@ -16,7 +16,7 @@
         Registration Form</div>
 
 
-    <c:url var="userRegistration" value="saveUser.html" />
+     <c:url var="userRegistration" value="saveUser.html" />
     <form:form id="registerForm" modelAttribute="employee" method="post"
                action="register">
         <table width="400px" height="150px">

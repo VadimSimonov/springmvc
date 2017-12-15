@@ -16,37 +16,63 @@ public class DataController {
     @Autowired
     DataService dataService;
 
+    /*
     @RequestMapping("/form")
     public ModelAndView getForm(@ModelAttribute Employee employee) {
         return new ModelAndView("form");
     }
+    */
 
+    /*
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ModelAndView registerUser(@ModelAttribute Employee employee) {
         dataService.insertRow(employee);
         return new ModelAndView("redirect:list");
     }
+    */
+    @RequestMapping(value = "/list/register",method = RequestMethod.POST)
+    public ModelAndView registerUser(@ModelAttribute Employee employee) {
+        dataService.insertRow(employee);
+        return new ModelAndView("redirect:list");
+    }
 
+/*
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView getList() {
         List employeeList = dataService.getList();
         return new ModelAndView("list", "employeeList", employeeList);
     }
+    */
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView getList(ModelAndView model) {
+        model.addObject("employee",new Employee());
+        model.addObject("employeeList",dataService.getList());
 
-    @RequestMapping("/delete")
+    return model;
+}
+    @RequestMapping(value = "/spring/newUser", method = RequestMethod.GET)
+    public ModelAndView newContact(ModelAndView model) {
+        Employee newUser= new Employee();
+        model.addObject("employee", newUser);
+        model.setViewName("register");
+        return model;
+    }
+
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ModelAndView deleteUser(@RequestParam int id) {
         dataService.deleteRow(id);
         return new ModelAndView("redirect:list");
     }
 
-    @RequestMapping("/edit")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editUser(@RequestParam int id,
                                  @ModelAttribute Employee employee) {
         Employee employeeObject = dataService.getRowById(id);
         return new ModelAndView("edit", "employeeObject", employeeObject);
     }
 
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateUser(@ModelAttribute Employee employee) {
         dataService.updateRow(employee);
         return new ModelAndView("redirect:list");
