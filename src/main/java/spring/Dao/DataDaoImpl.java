@@ -26,12 +26,10 @@ public class DataDaoImpl implements DataDao {
         return (Integer) id;
     }
 
-
+    @SuppressWarnings("unchecked")
     public List<Employee> getList() {
         Session session = sessionFactory.openSession();
-        @SuppressWarnings("unchecked")
-        List<Employee> employeeList = session.createQuery("from Employee")
-                .list();
+        List<Employee> employeeList = session.createQuery("from Employee").list();
         session.close();
         return employeeList;
     }
