@@ -16,7 +16,7 @@ public class DataDaoImpl implements DataDao {
 
 
     @Transactional
-    public int insertRow(Employee employee) {
+    public int insertOrUpdateRow(Employee employee) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.saveOrUpdate(employee);
@@ -39,17 +39,6 @@ public class DataDaoImpl implements DataDao {
         Session session = sessionFactory.openSession();
         Employee employee = (Employee) session.load(Employee.class, id);
         return employee;
-    }
-
-
-    public int updateRow(Employee employee) {
-        Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.saveOrUpdate(employee);
-        tx.commit();
-        Serializable id = session.getIdentifier(employee);
-        session.close();
-        return (Integer) id;
     }
 
 

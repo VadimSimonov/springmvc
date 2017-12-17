@@ -48,7 +48,7 @@
     </c:if>
 
 
-    <a href="/spring/newUser">Click Here to add new User</a>
+    <a href="/newUser">Click Here to add new User</a>
 </center>
 </body>
 </html>

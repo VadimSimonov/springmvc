@@ -10,8 +10,8 @@ public class DataServiceImpl implements DataService {
     @Autowired
     DataDao dataDao;
 
-    public int insertRow(Employee employee) {
-        return dataDao.insertRow(employee);
+    public int insertOrUpdateRow(Employee employee) {
+        return dataDao.insertOrUpdateRow(employee);
     }
 
     public List<Employee> getList() {
@@ -20,10 +20,6 @@ public class DataServiceImpl implements DataService {
 
     public Employee getRowById(int id) {
         return dataDao.getRowById(id);
-    }
-
-    public int updateRow(Employee employee) {
-        return dataDao.updateRow(employee);
     }
 
     public int deleteRow(int id) {
